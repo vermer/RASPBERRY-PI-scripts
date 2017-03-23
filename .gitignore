@@ -1,1 +1,2 @@
-checkDelugeAlive.log
+# log files
+*.log
