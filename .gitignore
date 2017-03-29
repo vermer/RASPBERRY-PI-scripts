@@ -1,2 +1,6 @@
 # log files
 *.log
+# python files
+*.pyc
+# configuration files
+*.ini
