@@ -5,13 +5,17 @@ import urllib
 from urllib import urlopen
 import logging
 from logging import handlers
+import datetime
 
 class LocalizationSender:
+
     logger = None
     json = None
     MESSAGE = "Your vpn conection is broken please recconect. "
+
     def __init__(self):
-        handler = logging.handlers.RotatingFileHandler('localization.log', maxBytes=1000000, backupCount=5)
+        now = datetime.datetime.now()
+        handler = logging.handlers.TimedRotatingFileHandler('localization'+ now.strftime("%Y-%m-%d") +'.log', when='D', interval=1, backupCount=20, encoding=None, delay=False, utc=False)
         self.logger = logging.getLogger('LocalizationSender')
         self.logger.setLevel(logging.DEBUG)
         self.logger.addHandler(handler)
@@ -33,7 +37,7 @@ class LocalizationSender:
     def getLocalizationJSON(self):
         url = 'http://ipinfo.io/json'
         response = urlopen(url)
-        if response.getcode() != "200":
+        if response.getcode() != 200:
             self.messageLogger(self.getErrorMessage(str(response.getcode())))
         self.json = json.load(response)
 
