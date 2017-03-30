@@ -14,6 +14,8 @@ class LocalizationSender:
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     handler.setFormatter(formatter)
     MESSAGE = "Your vpn conection is broken please recconect. "
+    def getErrorMessage(self, code):
+        return "If you need to make more requests or custom data, see our paid plans, which all have soft limits. " + code
 
     def messageLogger(self, text):
         self.logger.info(text)
@@ -26,6 +28,8 @@ class LocalizationSender:
     def getLocalizationJSON(self):
         url = 'http://ipinfo.io/json'
         response = urlopen(url)
+        if response.getcode() != "201":
+            self.messageLogger(self.getErrorMessage(str(response.getcode())))
         return json.load(response)
 
     def getTelegramMessage(self):
