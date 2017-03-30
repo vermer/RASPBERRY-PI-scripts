@@ -3,33 +3,48 @@ import ConfigParser
 import json
 import urllib
 from urllib import urlopen
-
 import logging
-logging.basicConfig(filename='localization.log',level=logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logging.debug('This message should go to the log file')
-logging.info('So should this')
-logging.warning('And this, too')
+from logging import handlers
 
-config = ConfigParser.ConfigParser()
-config.read('localization.ini')
-url = 'http://ipinfo.io/json'
-response = urlopen(url)
-data = json.load(response)
+class LocalizationSender:
+    logger = logging.getLogger('LocalizationSender')
+    logger.setLevel(logging.DEBUG)
+    handler = logging.handlers.RotatingFileHandler('localization.log', maxBytes=1000000, backupCount=5)
+    logger.addHandler(handler)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+    MESSAGE = "Your vpn conection is broken please recconect. "
 
-IP = data['ip']
-org = data['org']
-city = data['city']
-country = data['country']
-region = data['region']
+    def messageLogger(self, text):
+        self.logger.info(text)
 
-message = "Your vpn conection is broken please recconect " + country + " " + IP + " " + city + " " + org + " " + region
+    def getConfig(self):
+        config = ConfigParser.ConfigParser()
+        config.read('localization.ini')
+        return config
 
-if country == 'PL':
-    message = urllib.urlopen(
-        "https://api.telegram.org/bot" +
-        config.get('DEFAULT', 'telegramApiKey') +
-        "/sendMessage?chat_id=" +
-        config.get('DEFAULT', 'telegramUsername') +
-        "&text=" + message
-        ).read()
+    def getLocalizationJSON(self):
+        url = 'http://ipinfo.io/json'
+        response = urlopen(url)
+        return json.load(response)
+
+    def getTelegramMessage(self):
+        data = self.getLocalizationJSON()
+        self.messageLogger(data)
+        return self.MESSAGE + data['country'] + " " + data['ip'] + " " + data['city']
+
+
+    def sendMessage(self):
+        if self.getLocalizationJSON()['country'] == 'PL':
+            message = self.getTelegramMessage()
+            self.messageLogger(message)
+            message = urllib.urlopen(
+            "https://api.telegram.org/bot" +
+            self.getConfig().get('DEFAULT', 'telegramApiKey') +
+            "/sendMessage?chat_id=" +
+            self.getConfig().get('DEFAULT', 'telegramUsername') +
+            "&text=" + message
+            ).read()
+
+localizationSender = LocalizationSender()
+localizationSender.sendMessage()
