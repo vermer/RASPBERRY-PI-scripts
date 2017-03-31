@@ -6,22 +6,38 @@ from urllib import urlopen
 import logging
 from logging import handlers
 import datetime
+import time
+import httplib
 
 class LocalizationSender:
 
     logger = None
     json = None
     MESSAGE = "Your vpn conection is broken please recconect. "
+    CONFIG_FILE  = 'localization.ini'
+    LOG_FILE_PATH = "logs\\"
+    LOG_FILE = 'localization'
+    LOG_FILE_EXT = '.log'
 
     def __init__(self):
-        now = datetime.datetime.now()
-        handler = logging.handlers.TimedRotatingFileHandler('localization'+ now.strftime("%Y-%m-%d") +'.log', when='D', interval=1, backupCount=20, encoding=None, delay=False, utc=False)
         self.logger = logging.getLogger('LocalizationSender')
         self.logger.setLevel(logging.DEBUG)
+        handler = logging.handlers.TimedRotatingFileHandler(self.getLoggerFileName(), when='D', interval=1, backupCount=20, encoding=None)
         self.logger.addHandler(handler)
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         handler.setFormatter(formatter)
         self.getLocalizationJSON()
+        # for i in range(99999999):
+        #     self.logger.debug('debug message')
+        #     self.logger.info('informational message')
+        #     self.logger.warn('warning')
+        #     self.logger.error('error message')
+        #     self.logger.critical('critical failure')
+        #     time.sleep(1)
+
+    def getLoggerFileName(self):
+        now = datetime.datetime.now()
+        return self.LOG_FILE_PATH + self.LOG_FILE + now.strftime("%Y-%m-%d") + self.LOG_FILE_EXT
 
     def getErrorMessage(self, code):
         return "If you need to make more requests or custom data, see our paid plans, which all have soft limits. " + code
@@ -31,13 +47,13 @@ class LocalizationSender:
 
     def getConfig(self):
         config = ConfigParser.ConfigParser()
-        config.read('localization.ini')
+        config.read(self.CONFIG_FILE)
         return config
 
     def getLocalizationJSON(self):
         url = 'http://ipinfo.io/json'
         response = urlopen(url)
-        if response.getcode() != 200:
+        if response.getcode() != 201:
             self.messageLogger(self.getErrorMessage(str(response.getcode())))
         self.json = json.load(response)
 
