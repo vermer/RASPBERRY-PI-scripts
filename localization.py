@@ -27,13 +27,6 @@ class LocalizationSender:
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         handler.setFormatter(formatter)
         self.getLocalizationJSON()
-        # for i in range(99999999):
-        #     self.logger.debug('debug message')
-        #     self.logger.info('informational message')
-        #     self.logger.warn('warning')
-        #     self.logger.error('error message')
-        #     self.logger.critical('critical failure')
-        #     time.sleep(1)
 
     def getLoggerFileName(self):
         now = datetime.datetime.now()
