@@ -1,38 +1,42 @@
 #!/usr/bin/env python
-import ConfigParser
+from TelegramService import TelegramService
 import json
 import urllib
 from urllib import urlopen
 import logging
 from logging import handlers
 import datetime
+import time
+import httplib
 
-class LocalizationSender:
+class LocalizationService:
 
     logger = None
     json = None
     MESSAGE = "Your vpn conection is broken please recconect. "
+    LOG_FILE_PATH = "logs\\"
+    LOG_FILE = 'localization'
+    LOG_FILE_EXT = '.log'
+    telegramService = TelegramService()
 
     def __init__(self):
-        now = datetime.datetime.now()
-        handler = logging.handlers.TimedRotatingFileHandler('localization'+ now.strftime("%Y-%m-%d") +'.log', when='D', interval=1, backupCount=20, encoding=None, delay=False, utc=False)
         self.logger = logging.getLogger('LocalizationSender')
         self.logger.setLevel(logging.DEBUG)
+        handler = logging.handlers.TimedRotatingFileHandler(self.getLoggerFileName(), when='D', interval=1, backupCount=20, encoding=None)
         self.logger.addHandler(handler)
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         handler.setFormatter(formatter)
         self.getLocalizationJSON()
+
+    def getLoggerFileName(self):
+        now = datetime.datetime.now()
+        return self.LOG_FILE_PATH + self.LOG_FILE + now.strftime("%Y-%m-%d") + self.LOG_FILE_EXT
 
     def getErrorMessage(self, code):
         return "If you need to make more requests or custom data, see our paid plans, which all have soft limits. " + code
 
     def messageLogger(self, text):
         self.logger.info(text)
-
-    def getConfig(self):
-        config = ConfigParser.ConfigParser()
-        config.read('localization.ini')
-        return config
 
     def getLocalizationJSON(self):
         url = 'http://ipinfo.io/json'
@@ -47,15 +51,8 @@ class LocalizationSender:
 
     def sendMessage(self):
         if self.json['country'] == 'PL':
-            message = self.getTelegramMessage()
-            self.messageLogger(message)
-            message = urllib.urlopen(
-            "https://api.telegram.org/bot" +
-            self.getConfig().get('DEFAULT', 'telegramApiKey') +
-            "/sendMessage?chat_id=" +
-            self.getConfig().get('DEFAULT', 'telegramUsername') +
-            "&text=" + message
-            ).read()
+            self.telegramService.sendMessage(self.getTelegramMessage())
 
-localizationSender = LocalizationSender()
-localizationSender.sendMessage()
+
+localizationService = LocalizationService()
+localizationService.sendMessage()
