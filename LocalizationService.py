@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import ConfigParser
+from TelegramService import TelegramService
 import json
 import urllib
 from urllib import urlopen
@@ -9,15 +9,15 @@ import datetime
 import time
 import httplib
 
-class LocalizationSender:
+class LocalizationService:
 
     logger = None
     json = None
     MESSAGE = "Your vpn conection is broken please recconect. "
-    CONFIG_FILE  = 'localization.ini'
     LOG_FILE_PATH = "logs\\"
     LOG_FILE = 'localization'
     LOG_FILE_EXT = '.log'
+    telegramService = TelegramService()
 
     def __init__(self):
         self.logger = logging.getLogger('LocalizationSender')
@@ -38,15 +38,10 @@ class LocalizationSender:
     def messageLogger(self, text):
         self.logger.info(text)
 
-    def getConfig(self):
-        config = ConfigParser.ConfigParser()
-        config.read(self.CONFIG_FILE)
-        return config
-
     def getLocalizationJSON(self):
         url = 'http://ipinfo.io/json'
         response = urlopen(url)
-        if response.getcode() != 201:
+        if response.getcode() != 200:
             self.messageLogger(self.getErrorMessage(str(response.getcode())))
         self.json = json.load(response)
 
@@ -56,15 +51,8 @@ class LocalizationSender:
 
     def sendMessage(self):
         if self.json['country'] == 'PL':
-            message = self.getTelegramMessage()
-            self.messageLogger(message)
-            message = urllib.urlopen(
-            "https://api.telegram.org/bot" +
-            self.getConfig().get('DEFAULT', 'telegramApiKey') +
-            "/sendMessage?chat_id=" +
-            self.getConfig().get('DEFAULT', 'telegramUsername') +
-            "&text=" + message
-            ).read()
+            self.telegramService.sendMessage(self.getTelegramMessage())
 
-localizationSender = LocalizationSender()
-localizationSender.sendMessage()
+
+localizationService = LocalizationService()
+localizationService.sendMessage()
