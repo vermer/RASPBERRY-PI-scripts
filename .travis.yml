@@ -1,4 +1,4 @@
 # command to run tests
-script: python LocalizationService.py  # or py.test for Python versions 3.5 and below
+script: python Localization.py  # or py.test for Python versions 3.5 and below
 notifications:
   webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
