@@ -52,7 +52,3 @@ class LocalizationService:
     def sendMessage(self):
         if self.json['country'] == 'PL':
             self.telegramService.sendMessage(self.getTelegramMessage())
-
-
-localizationService = LocalizationService()
-localizationService.sendMessage()
