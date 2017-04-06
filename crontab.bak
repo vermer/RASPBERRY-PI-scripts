@@ -21,7 +21,7 @@
 #
 # m h  dom mon dow   command
 
-*/2 * * * * /home/pi/RASPBERRY-PI-scripts/LocalizationService.py
+*/2 * * * * /home/pi/RASPBERRY-PI-scripts/Localization.py
 
 */5 * * * * /home/pi/RASPBERRY-PI-scripts/checkDelugeAlive.sh
 
