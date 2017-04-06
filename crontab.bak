@@ -27,7 +27,7 @@
 
 */5 * * * * /home/pi/RASPBERRY-PI-scripts/napi.py /media/wd/completed/
 
-@daily /home/pi/RASPBERRY-PI-scripts/update.sh
+* 1 * * * * /home/pi/RASPBERRY-PI-scripts/update.sh
 
 @daily git pull /home/pi/RASPBERRY-PI-scripts/
 
