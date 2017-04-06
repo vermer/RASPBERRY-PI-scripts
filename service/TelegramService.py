@@ -1,19 +1,15 @@
 import urllib
 import ConfigParser
+import requests
 
 class TelegramService:
 
     CONFIG_FILE  = 'localization.ini'
 
     def sendMessage(self, message):
-        '''self.messageLogger(message)'''
-        request = urllib.urlopen(
-        "https://api.telegram.org/bot" +
-        self.getConfig().get('DEFAULT', 'telegramApiKey') +
-        "/sendMessage?chat_id=" +
-        self.getConfig().get('DEFAULT', 'telegramUsername') +
-        "&text=" + message
-        ).read()
+        parameters = {'chat_id' : self.getConfig().get('DEFAULT', 'chat_id'), 'text' : message}
+        apiKey = self.getConfig().get('DEFAULT', 'telegramApiKey')
+        r = requests.get('https://api.telegram.org/bot' + apiKey + "/sendMessage", data = parameters)
 
     def getConfig(self):
         config = ConfigParser.ConfigParser()
