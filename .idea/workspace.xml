@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="449686a6-218b-4e95-b455-97bfd24ff2d6" name="Default" comment="Added new Structure + new Logger to project">
+    <list default="true" id="449686a6-218b-4e95-b455-97bfd24ff2d6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/LocalizationService.py" afterPath="$PROJECT_DIR$/service/LocalizationService.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/LoggingService.py" afterPath="$PROJECT_DIR$/service/LoggingService.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/TelegramService.py" afterPath="$PROJECT_DIR$/service/TelegramService.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,14 +20,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LocalizationService.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LocalizationService.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/LocalizationService.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="584">
+            <state relative-caret-position="756">
               <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
               <folding>
                 <element signature="e#22#33#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -67,7 +75,7 @@
       <file leaf-file-name="TelegramService.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/TelegramService.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
+            <state relative-caret-position="441">
               <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -134,7 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/example.log" />
         <option value="$PROJECT_DIR$/LocalizationService_2017-04-06.log" />
         <option value="$PROJECT_DIR$/service/LoggingService.py" />
@@ -142,6 +149,7 @@
         <option value="$PROJECT_DIR$/service/TelegramService.py" />
         <option value="$PROJECT_DIR$/service/LocalizationService.py" />
         <option value="$PROJECT_DIR$/logs/LocalizationService_2017-04-07.log" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -479,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491490881080</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Class refactor">
+      <created>1491574438153</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1491574438153</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -514,7 +529,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added new Structure + new Logger to project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new Structure + new Logger to project" />
+    <MESSAGE value="Class refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Class refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -719,6 +735,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="234" column="0" lean-forward="false" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -728,13 +745,6 @@
         <state relative-caret-position="302">
           <caret line="1144" column="8" lean-forward="false" selection-start-line="1144" selection-start-column="8" selection-end-line="1144" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -780,16 +790,6 @@
           <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/TelegramService.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -842,13 +842,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/service/TelegramService.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/service/LocalizationService.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
+        <state relative-caret-position="756">
           <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
           <folding>
             <element signature="e#22#33#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

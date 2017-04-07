@@ -2,3 +2,4 @@
 script: python Localization.py  # or py.test for Python versions 3.5 and below
 notifications:
   webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
+install: "pip install requests"
