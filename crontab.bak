@@ -32,3 +32,6 @@
 @daily git pull /home/pi/RASPBERRY-PI-scripts/
 
 @daily crontab /home/pi/RASPBERRY-PI-scripts/crontab.bak
+
+0 2 * * * /sbin/shutdown -r now
+
