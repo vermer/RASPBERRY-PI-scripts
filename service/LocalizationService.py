@@ -20,13 +20,17 @@ MESSAGE = "Your vpn connection is broken please reconnect. "
 def getErrorMessage(code):
     return "If you need to make more requests or custom data, see our paid plans, which all have soft limits. " + code
 
+def getEncodedJSON(jsonResponse):
+    return json.loads(jsonResponse)
 
 def getTelegramMessage(jsonResponse):
-    return MESSAGE + jsonResponse[COUNTRY] + SPACE + jsonResponse[IP] + SPACE + jsonResponse[CITY]
+    resp = getEncodedJSON(jsonResponse)
+    return MESSAGE + resp[COUNTRY] + SPACE + resp[IP] + SPACE + resp[CITY]
 
 
 def checkIfCountryCodeFromJSONisEqualCountryCode(jsonResponse):
-    return jsonResponse[COUNTRY] == COUNTRY_CODE
+    resp = getEncodedJSON(jsonResponse)
+    return resp[COUNTRY] == COUNTRY_CODE
 
 
 def sendMessage(jsonResponse):
