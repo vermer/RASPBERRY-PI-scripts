@@ -33,5 +33,4 @@
 
 @daily crontab /home/pi/RASPBERRY-PI-scripts/crontab.bak
 
-0 2 * * * /sbin/shutdown -r now
-
+@weekly /sbin/shutdown -r now

@@ -8,7 +8,7 @@ class Localization:
     localizationService = LocalizationService()
 
     def run(self):
-        self.localizationService.sendMessage()
+        sendMessage()
 
 localization = Localization()
 localization.run()
