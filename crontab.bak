@@ -21,16 +21,16 @@
 #
 # m h  dom mon dow   command
 
-*/2 * * * * /home/pi/RASPBERRY-PI-scripts/Localization.py
+*/2 * * * * /home/pi/raspberry-pi-scripts/Localization.py
 
-*/5 * * * * /home/pi/RASPBERRY-PI-scripts/checkDelugeAlive.sh
+*/5 * * * * /home/pi/raspberry-pi-scripts/checkDelugeAlive.sh
 
-*/5 * * * * /home/pi/RASPBERRY-PI-scripts/napi.py /media/wd/completed/
+*/5 * * * * /home/pi/raspberry-pi-scripts/napi.py /media/wd/completed/
 
-* 1 * * * /home/pi/RASPBERRY-PI-scripts/update.sh
+* 1 * * * /home/pi/raspberry-pi-scripts/update.sh
 
-@daily git pull /home/pi/RASPBERRY-PI-scripts/
+@daily git pull /home/pi/raspberry-pi-scripts/
 
-@daily crontab /home/pi/RASPBERRY-PI-scripts/crontab.bak
+@daily crontab /home/pi/raspberry-pi-scripts/crontab.bak
 
 @weekly /sbin/shutdown -r now
