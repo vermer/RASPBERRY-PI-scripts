@@ -21,13 +21,13 @@
 #
 # m h  dom mon dow   command
 
-*/2 * * * * /home/pi/raspberry-pi-scripts/Localization.py
+*/2 * * * * /home/pi/raspberry-pi-scripts/Localization.py >> /var/log/daily-backup.log 2>&1
 
 */5 * * * * /home/pi/raspberry-pi-scripts/checkProcessAlive.sh deluged >> /var/log/daily-backup.log 2>&1
 
-*/5 * * * * /home/pi/raspberry-pi-scripts/napi.py /media/wd/completed/
+*/5 * * * * /home/pi/raspberry-pi-scripts/napi.py /media/wd/completed/ >> /var/log/daily-napi-backup.log 2>&1
 
-* 1 * * * /home/pi/raspberry-pi-scripts/update.sh
+* 1 * * * /home/pi/raspberry-pi-scripts/update.sh >> /var/log/daily-update-backup.log 2>&1
 
 @daily git pull /home/pi/raspberry-pi-scripts/
 

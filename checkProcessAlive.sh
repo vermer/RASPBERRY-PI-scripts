@@ -4,7 +4,6 @@
 # some problems. Script is added to crontab.bak file and it is runned evry 5 minuts
 # according do default configuration. Can be easly change in this file.
 
-#!/bin/bash
 PROCESS=$1
 PIDS=`ps cax | grep $PROCESS | grep -o '^[ ]*[0-9]*'`
 if [ -z "$PIDS" ]; then
