@@ -11,8 +11,12 @@ now = "$(date)"
 err() {
   logger -p user.error -t $SCRIPT_NAME "$@"
 }
-if $(ps -A | grep -o  "deluged"); then
+
+
+
+if $(ps cax | grep deluged); then
 	sleep 1
+  err "$now" ": Deluge works"
 else
 	err "$now" ": Deluge crashed"
 	sudo service deluge-daemon restart
