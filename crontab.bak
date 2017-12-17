@@ -23,7 +23,7 @@
 
 */2 * * * * /home/pi/raspberry-pi-scripts/Localization.py
 
-*/5 * * * * /home/pi/raspberry-pi-scripts/checkDelugeAlive.sh
+*/5 * * * * /home/pi/raspberry-pi-scripts/checkProcessAlive.sh deluged
 
 */5 * * * * /home/pi/raspberry-pi-scripts/napi.py /media/wd/completed/
 
