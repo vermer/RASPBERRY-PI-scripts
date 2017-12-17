@@ -6,13 +6,29 @@
 
 #!/bin/bash
 PROCESS=$1
+now = "$(date)"
 PIDS=`ps cax | grep $PROCESS | grep -o '^[ ]*[0-9]*'`
 if [ -z "$PIDS" ]; then
-  echo "Process not running." 1>&2
+  echo "$now" "Process not running." 1>&2
   sudo service deluge-daemon restart
   exit 1
 else
-  echo "Process running." 1>&2
-
   exit 1
+fi
+
+
+readonly SCRIPT_NAME=$(basename $0)
+
+now = "$(date)"
+
+err() {
+  logger -p user.error -t $SCRIPT_NAME "$@"
+}
+
+if $(ps cax | grep deluged); then
+	sleep 1
+  err "$now" ": Deluge works"
+else
+	err "$now" ": Deluge crashed"
+
 fi
