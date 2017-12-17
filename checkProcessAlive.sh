@@ -6,7 +6,7 @@
 
 #!/bin/bash
 PROCESS=$1
-now = "$(date)"
+date = "$(date)"
 PIDS=`ps cax | grep $PROCESS | grep -o '^[ ]*[0-9]*'`
 if [ -z "$PIDS" ]; then
   echo "$now" "Process not running." 1>&2
