@@ -12,6 +12,5 @@ if [ -z "$PIDS" ]; then
   sudo service deluge-daemon restart
   exit 1
 else
-  echo $(date +"%Y-%m-%d %H:%M:%S") "Process running." 1>&2
   exit 1
 fi
