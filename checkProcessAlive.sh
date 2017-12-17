@@ -12,5 +12,6 @@ if [ -z "$PIDS" ]; then
   exit 1
 else
   echo "Process running." 1>&2
+  sudo service deluge-daemon restart
   exit 1
 fi
