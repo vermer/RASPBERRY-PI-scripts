@@ -6,12 +6,12 @@
 
 #!/bin/bash
 PROCESS=$1
-date = "$(date)"
 PIDS=`ps cax | grep $PROCESS | grep -o '^[ ]*[0-9]*'`
 if [ -z "$PIDS" ]; then
-  echo "$now" "Process not running." 1>&2
+  echo $(date -u) "Process not running." 1>&2
   sudo service deluge-daemon restart
   exit 1
 else
+  echo $(date -u) "Process running." 1>&2
   exit 1
 fi
