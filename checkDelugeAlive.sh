@@ -4,20 +4,10 @@
 # some problems. Script is added to crontab.bak file and it is runned evry 5 minuts
 # according do default configuration. Can be easly change in this file.
 
-readonly SCRIPT_NAME=$(basename $0)
-
-now = "$(date)"
-
-err() {
-  logger -p user.error -t $SCRIPT_NAME "$@"
-}
-
-
-
-if $(ps cax | grep deluged); then
-	sleep 1
-  err "$now" ": Deluge works"
+#!/bin/bash
+ps cax | grep deluged
+if [ $? -eq 0 ]; then
+  echo "Process is running."
 else
-	err "$now" ": Deluge crashed"
-	sudo service deluge-daemon restart
+  echo "Process is not running."
 fi
