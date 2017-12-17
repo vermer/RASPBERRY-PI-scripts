@@ -15,20 +15,3 @@ if [ -z "$PIDS" ]; then
 else
   exit 1
 fi
-
-
-readonly SCRIPT_NAME=$(basename $0)
-
-now = "$(date)"
-
-err() {
-  logger -p user.error -t $SCRIPT_NAME "$@"
-}
-
-if $(ps cax | grep deluged); then
-	sleep 1
-  err "$now" ": Deluge works"
-else
-	err "$now" ": Deluge crashed"
-
-fi
