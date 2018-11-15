@@ -21,9 +21,9 @@
 #
 # m h  dom mon dow   command
 
-*/2 * * * * /home/pi/raspberry-pi-scripts/Localization.py >> /var/log/daily-backup.log 2>&1
+*/2 * * * * /home/pi/raspberry-pi-scripts/Localization.py >> /var/log/daily-localization-backup.log 2>&1
 
-*/5 * * * * /home/pi/raspberry-pi-scripts/checkProcessAlive.sh deluged >> /var/log/daily-backup.log 2>&1
+*/5 * * * * /home/pi/raspberry-pi-scripts/checkProcessAlive.sh deluged >> /var/log/daily-deluge-backup.log 2>&1
 
 */5 * * * * /home/pi/raspberry-pi-scripts/napi.py /media/wd/completed/ >> /var/log/daily-napi-backup.log 2>&1
 
