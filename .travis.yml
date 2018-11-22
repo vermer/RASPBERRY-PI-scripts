@@ -2,4 +2,4 @@
 script: python3 Localization.py  # or py.test for Python versions 3.5 and below
 python:
   - "2.7"
-install: "sudo pip install requests"
+install: "sudo pip3 install requests"
