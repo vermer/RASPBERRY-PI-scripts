@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 import json
-from urllib import urlopen
-
 import requests
+from urllib.request import urlopen
 
-from LoggingService import LoggingService
-from TelegramService import TelegramService
+from . import LoggingService
+from . import TelegramService
 
 CLASS_NAME = "LocalizationService"
 CITY = 'city'
@@ -20,8 +19,10 @@ MESSAGE = "Your vpn connection is broken please reconnect. "
 def getErrorMessage(code):
     return "If you need to make more requests or custom data, see our paid plans, which all have soft limits. " + code
 
+
 def getEncodedJSON(jsonResponse):
-    return json.loads(jsonResponse)
+    return json.loads(json.dumps(jsonResponse))
+
 
 def getTelegramMessage(jsonResponse):
     resp = getEncodedJSON(jsonResponse)
@@ -34,11 +35,11 @@ def checkIfCountryCodeFromJSONisEqualCountryCode(jsonResponse):
 
 
 def sendMessage(jsonResponse):
-    TelegramService.sendMessage(getTelegramMessage(jsonResponse))
+    TelegramService.TelegramService.sendMessage(getTelegramMessage(jsonResponse))
 
 
 class LocalizationService:
-    logger = LoggingService(CLASS_NAME)
+    logger = LoggingService.LoggingService(CLASS_NAME)
     json = None
 
     def __init__(self):
@@ -63,7 +64,6 @@ class LocalizationService:
 
     def saveJSON(self, response):
         self.json = json.load(response)
-        self.logger.debug(self.json)
         return self.json
 
     def checkIfMessageShouldBeSend(self):

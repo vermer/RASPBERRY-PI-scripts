@@ -1,16 +1,17 @@
-import ConfigParser
+import configparser
 import requests
 
 CONFIG_FILE = 'localization.ini'
 
 
 def getConfig():
-    config = ConfigParser.ConfigParser()
+    config = configparser.ConfigParser()
     config.read(CONFIG_FILE)
     return config
 
 
 def telegram_url(apiKey):
+    print (apiKey)
     return 'https://api.telegram.org/bot' + apiKey + "/sendMessage"
 
 
