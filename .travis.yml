@@ -1,5 +1,6 @@
 # command to run tests
-script: python3 Localization.py  # or py.test for Python versions 3.5 and below
 python:
-  - "2.7"
-install: "sudo pip3 install requests"
+  - "3.7-dev"
+install: "pip install requests"
+
+script: python Localization.py  # or py.test for Python versions 3.5 and below
