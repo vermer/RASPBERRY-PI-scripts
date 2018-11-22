@@ -5,10 +5,10 @@ class Localization:
     def __init__(self):
         pass
 
-    localizationService = LocalizationService()
-
     def run(self):
-        sendMessage()
+        localizationService = LocalizationService()
+        localizationService.run()
+
 
 localization = Localization()
 localization.run()
