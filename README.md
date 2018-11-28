@@ -1,4 +1,8 @@
+
+
+
 ## raspberryPI-scripts
+[![Build Status](https://travis-ci.org/vermer/raspberry-pi-scripts.svg?branch=master)](https://travis-ci.org/vermer/raspberry-pi-scripts)
 
 Few simple script to make easier life with Raspberry PI.
 
