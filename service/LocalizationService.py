@@ -35,7 +35,8 @@ def checkIfCountryCodeFromJSONisEqualCountryCode(jsonResponse):
 
 
 def sendMessage(jsonResponse):
-    TelegramService.TelegramService.sendMessage(getTelegramMessage(jsonResponse))
+    TelegramService.TelegramService.sendMessage(
+        getTelegramMessage(jsonResponse))
 
 
 class LocalizationService:
@@ -59,7 +60,7 @@ class LocalizationService:
             response = urlopen(URL)
         except requests.ConnectionError:
             self.logger.error("Connection problem with" + URL)
-        self.logger.error(getErrorMessage(str(response.getcode())))
+            self.logger.error(getErrorMessage(str(response.getcode())))
         return self.saveJSON(response)
 
     def saveJSON(self, response):
