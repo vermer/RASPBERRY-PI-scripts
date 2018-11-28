@@ -11,7 +11,6 @@ def getConfig():
 
 
 def telegram_url(apiKey):
-    print (apiKey)
     return 'https://api.telegram.org/bot' + apiKey + "/sendMessage"
 
 
