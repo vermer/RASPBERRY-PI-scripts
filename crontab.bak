@@ -32,3 +32,5 @@
 @daily git pull /home/pi/raspberry-pi-scripts/
 
 @daily crontab /home/pi/raspberry-pi-scripts/crontab.bak
+
+@weekly /sbin/shutdown -r now
