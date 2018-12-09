@@ -64,7 +64,7 @@ class LocalizationService:
         return self.saveJSON(response)
 
     def saveJSON(self, response):
-        self.json = json.load(json.dumps(jsonResponse))
+        self.json = json.load(json.dumps(response))
         return self.json
 
     def checkIfMessageShouldBeSend(self):
